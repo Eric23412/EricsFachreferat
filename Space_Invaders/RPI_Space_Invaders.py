@@ -125,7 +125,7 @@ class Player(pygame.sprite.Sprite):
 
 
 background = pygame.image.load("Graphics/Background.bmp")
-TextFont = pygame.font.SysFont("Font/BAUHS93.OTF", 25)
+TextFont = pygame.font.Font("Fonts/BAUHS93.OTF", 25)
 shootsound = pygame.mixer.Sound("Sounds/Shoot.wav")
 playmusic = True
 gameover = False
