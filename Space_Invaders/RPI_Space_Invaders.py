@@ -20,13 +20,13 @@ spawn = False
 class Enemy(pygame.sprite.Sprite):
     def __init__(self,x,y,typenumber):
         super().__init__()
-        self.type = ['Graphics\Enemy0.bmp','Graphics\Enemy1.bmp','Graphics\Enemy2.bmp']
+        self.type = ['Graphics/Enemy0.bmp','Graphics/Enemy1.bmp','Graphics/Enemy2.bmp']
         self.scoredrop = [100,250,500]
         self.scoredrop = self.scoredrop[typenumber]
         self.image = pygame.image.load(self.type[typenumber]).convert_alpha()
         self.rect = self.image.get_rect(center=(x,y))
         self.k = 1
-        self.deathsound = pygame.mixer.Sound("Sounds\hitHurt.wav")
+        self.deathsound = pygame.mixer.Sound("Sounds/hitHurt.wav")
 
     def Move(self):        
         global hitwall
@@ -58,7 +58,7 @@ class Enemy(pygame.sprite.Sprite):
 class Bullet(pygame.sprite.Sprite):
     def __init__(self,x,y,i):
         super().__init__()
-        self.image = pygame.image.load('Graphics\Planets.bmp').convert_alpha()
+        self.image = pygame.image.load('Graphics/Planets.bmp').convert_alpha()
         self.rect = self.image.get_rect(center=(x,y))
         self.direction = i
 
@@ -71,9 +71,9 @@ class Bullet(pygame.sprite.Sprite):
 class Bomb(pygame.sprite.Sprite):
     def __init__(self,x,y):
         super().__init__()
-        self.Bombimage = pygame.image.load('Graphics\Planets1.bmp').convert_alpha()
-        self.Explosionimage = pygame.image.load('Graphics\Explosion.bmp').convert_alpha()
-        self.sound = pygame.mixer.Sound("Sounds\explosion.wav")
+        self.Bombimage = pygame.image.load('Graphics/Planets1.bmp').convert_alpha()
+        self.Explosionimage = pygame.image.load('Graphics/Explosion.bmp').convert_alpha()
+        self.sound = pygame.mixer.Sound("Sounds/explosion.wav")
         self.states = [self.Bombimage, self.Explosionimage]
         self.image = self.states[0]
         self.rect = self.image.get_rect(center=(x,y))
@@ -111,7 +111,7 @@ class Bomb(pygame.sprite.Sprite):
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load('Graphics\Player.bmp').convert_alpha()
+        self.image = pygame.image.load('Graphics/Player.bmp').convert_alpha()
         self.rect = self.image.get_rect(topleft=(480,450))
 
     def Inputs(self):
@@ -124,9 +124,9 @@ class Player(pygame.sprite.Sprite):
         self.Inputs()
 
 
-background = pygame.image.load("Graphics\Background.bmp")
-TextFont = pygame.font.SysFont("Font\BAUHS93.OTF", 25)
-shootsound = pygame.mixer.Sound("Sounds\Shoot.wav")
+background = pygame.image.load("Graphics/Background.bmp")
+TextFont = pygame.font.SysFont("Font/BAUHS93.OTF", 25)
+shootsound = pygame.mixer.Sound("Sounds/Shoot.wav")
 playmusic = True
 gameover = False
 gamestarted = False
@@ -138,14 +138,14 @@ score = 0
 StartTime = pygame.time.get_ticks()
 tickspeed = 1
 
-HiScore = open("Save\Hi-Score.txt","a")
+HiScore = open("Save/Hi-Score.txt","a")
 HiScoreName = ["A","A","A"]
 Underscore = [450,462,474]
 namepos = 0
 f = 0
 
 bombammo = 5
-selectedweapon = [pygame.image.load('Graphics\Planets1.bmp').convert_alpha(),pygame.image.load('Graphics\Planets.bmp').convert_alpha()]
+selectedweapon = [pygame.image.load('Graphics/Planets1.bmp').convert_alpha(),pygame.image.load('Graphics/Planets.bmp').convert_alpha()]
 
 bombs = pygame.sprite.GroupSingle()
 bullets = pygame.sprite.Group()
@@ -234,7 +234,7 @@ while not done:
                 except: 1==1
                 hitwall = False
         if pygame.sprite.spritecollide(player.sprite, enemys, True):
-            pygame.mixer.Sound("Sounds\PlayerHit.wav").play()
+            pygame.mixer.Sound("Sounds/PlayerHit.wav").play()
             playerhealth -= 1
         if enemys.__len__() == 0:
             score += 500
